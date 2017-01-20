@@ -6,6 +6,7 @@ import { CanvasAreaComponent } from './canvas-area.component';
 import { CodeAreaComponent } from './code-area.component';
 import { InformationComponent } from './information.component';
 import { DALService} from './dal.service';
+import {ConceptFactoryService} from './../implementations/concept-factory.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { DALService} from './dal.service';
   ],
   declarations: [ConceptComponent, TitleComponent, CanvasAreaComponent, CodeAreaComponent, InformationComponent],
   exports : [ConceptComponent],
-  providers : [DALService]
+  providers : [DALService, ConceptFactoryService]
 })
 export class ConceptModule { }
