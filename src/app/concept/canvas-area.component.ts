@@ -1,5 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
-import { Genetics } from '../implementations/genetics/genetics';
+import { Component, OnInit, AfterViewInit, Input} from '@angular/core';
 import { ConceptFactoryService } from '../implementations/concept-factory.service';
 
 declare var paper : any;
@@ -12,16 +11,16 @@ declare var view : any;
     <p>
       canvas-area : {{conceptName}}
     </p>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas [id]="conceptName" resize></canvas>
   `,
   styles: []
 })
-export class CanvasAreaComponent implements OnInit {
+export class CanvasAreaComponent implements AfterViewInit {
 
   @Input() conceptName: string;
   constructor(private conceptFactory: ConceptFactoryService) { }
 
-  ngOnInit() {
-    this.conceptFactory.getImplementation(this.conceptName).do();
+  ngAfterViewInit() {
+    this.conceptFactory.getImplementation(this.conceptName).do(this.conceptName);
   }
 }

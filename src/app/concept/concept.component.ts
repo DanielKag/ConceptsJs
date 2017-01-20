@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-concept',
@@ -10,13 +10,6 @@ import { Component, OnInit , Input} from '@angular/core';
           `,
   styles: []
 })
-export class ConceptComponent implements OnInit {
-
+export class ConceptComponent {
   @Input() conceptName: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

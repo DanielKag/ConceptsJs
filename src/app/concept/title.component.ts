@@ -1,20 +1,21 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { ConceptFactoryService } from '../implementations/concept-factory.service';
 
 @Component({
   selector: 'app-title',
   template: `
-    <p>
-      title: {{conceptName}}
-    </p>
+    <h1>
+      title: {{getTitle()}}
+    </h1>
   `,
   styles: []
 })
-export class TitleComponent implements OnInit {
+export class TitleComponent {
 
-@Input() conceptName: string;
-  constructor() { }
+  @Input() conceptName: string;
+  constructor(private conecptFactory: ConceptFactoryService) { }
 
-  ngOnInit() {
+  public getTitle(): string {
+    return this.conecptFactory.getImplementation(this.conceptName).title();
   }
-
 }

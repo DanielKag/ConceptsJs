@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DALService} from './dal.service';
+import { ConceptFactoryService } from '../implementations/concept-factory.service';
 
 @Component({
   selector: 'app-information',
@@ -11,11 +11,12 @@ import { DALService} from './dal.service';
   styles: []
 })
 export class InformationComponent implements OnInit {
-@Input() conceptName: string;
-  constructor(private DAL: DALService) { }
 
-  public getInformation() : string {
-    return this.DAL.getConcept(this.conceptName).information;
+  @Input() conceptName: string;
+  constructor(private conecptFactory: ConceptFactoryService) { }
+
+  public getInformation(): string {
+    return this.conecptFactory.getImplementation(this.conceptName).info();
   }
 
   ngOnInit() {

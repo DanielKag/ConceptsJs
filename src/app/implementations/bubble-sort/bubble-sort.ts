@@ -4,14 +4,14 @@ declare var paper: any;
 declare var Path: any;
 declare var view: any;
 
-export class Genetics implements ConceptBase {
+export class BubbleSort implements ConceptBase {
 
     public title(): string {
-        return "Genetic algorithm";
+        return "Bubble sort";
     }
 
     public info(): string {
-        return "This is a Genetic algorithm";
+        return "This is a bubble sort";
     }
 
     public do(canvasName: string): void {
@@ -32,7 +32,7 @@ export class Genetics implements ConceptBase {
 
         view.onFrame = function(event) {
 			// On each frame, rotate the path by 3 degrees:
-        path.rotate(3);
+        path.rotate(-3);
         }
 
     }
