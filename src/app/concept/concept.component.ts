@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import {
     Component,
     ComponentFactoryResolver,
@@ -21,13 +22,25 @@ import {CanvasAreaComponent} from './canvas-area.component';
           `,
   styles: []
 })
-export class ConceptComponent implements DoCheck {
+export class ConceptComponent implements DoCheck, OnInit {
   @Input() conceptName: string;
   @ViewChild('canvasContainer', {read: ViewContainerRef}) canvasContainer: ViewContainerRef;
   private canvasFactory = this.resolver.resolveComponentFactory(CanvasAreaComponent);
   private currentConcept: string;
 
-  constructor(private resolver: ComponentFactoryResolver) {}
+  id: number;
+  private sub: any;
+
+
+  constructor(
+    private resolver: ComponentFactoryResolver,
+    private route: ActivatedRoute) {}
+
+  public ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+       this.conceptName = params['name'];
+    });
+  }
 
   public ngDoCheck() {
 

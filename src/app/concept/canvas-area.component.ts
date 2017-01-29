@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ConceptFactoryService } from '../implementations/concept-factory.service';
 
 declare var paper : any;
@@ -15,7 +15,7 @@ declare var view : any;
   `,
   styles: []
 })
-export class CanvasAreaComponent implements AfterViewInit, OnChanges, DoCheck {
+export class CanvasAreaComponent implements AfterViewInit {
 
   @Input() conceptName: string;
   constructor(private conceptFactory: ConceptFactoryService) { }
@@ -23,8 +23,4 @@ export class CanvasAreaComponent implements AfterViewInit, OnChanges, DoCheck {
   ngAfterViewInit() {
     this.conceptFactory.getImplementation(this.conceptName).do(this.conceptName);
   }
-  public ngDoCheck() { console.log("CANVAS doCheck")}
-  public ngOnChanges() {
-  console.log("on change from canvas");
-}
 }
