@@ -11,6 +11,7 @@ import {ConceptFactoryService} from './../implementations/concept-factory.servic
   imports: [
     CommonModule
   ],
+  entryComponents: [CanvasAreaComponent],
   declarations: [ConceptComponent, TitleComponent, CanvasAreaComponent, CodeAreaComponent, InformationComponent],
   exports : [ConceptComponent],
   providers : [ConceptFactoryService]
